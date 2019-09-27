@@ -9,7 +9,6 @@ def normal_simulations(assets, number_of_simulations):
 
 @jit(nopython=False, parallel=True)
 def gbm(s0, sigma, r, d, time_step,w):
-    gbm = pd.DataFrame()
     ln_r = np.log(1+r)
     ln_d  = np.log(1+d)
     gbm = s0 * np.exp(ln_r-ln_d-(1/2*(sigma**2)) * time_step + sigma * np.sqrt(time_step) * w)
